@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "StatisticheGiornaliere";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="card-title">Statistiche giornaliere</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="data">Seleziona una data:</label>
+                            <input type="date" class="form-control" id="data" name="data" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                        </div>
+                        <br />
+                        <div class="form-group text-center">
+                            <button type="button" id="visualizza-statistiche" class="btn btn-dark">Visualizza Statistiche</button>
+                        </div>
+                    </form>
+
+                    <div class="mt-4">
+                        <p id="numero-ordini">Ordini</p>
+                        <p id="totale-incassato">Totale incassato</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Cliccare due volte il bottone per far partire entrmbe le chiamate asincrone-->
+@section scripts {
+    <script>
+    $(document).ready(function () {
+        $('#visualizza-statistiche').click(function () {
+            $.ajax({
+                url: '@Url.Action("NumeroOrdiniEvasi", "Admin")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    $('#numero-ordini').text('Numero totale di ordini evasi: ' + response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+
+        $.ajax({
+                url: '@Url.Action("TotaleIncassato", "Admin")',
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    $('#totale-incassato').html('Totale incassato: ' + response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    </script>
+}

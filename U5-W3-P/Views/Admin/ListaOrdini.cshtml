@@ -1,0 +1,72 @@
+﻿@model IEnumerable<U5_W3_P.Models.Ordini>
+
+@{
+    ViewBag.Title = "ListaOrdini";
+}
+
+<h2>ListaOrdini</h2>
+
+<div class="container">
+    <form method="post" action="/Ordini/EditSelected">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Clienti.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().DataOrdine)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Importo)
+                    </th>
+                    <th>
+                        Evaso
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Clienti.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataOrdine)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Importo)
+                        </td>
+                        <td>
+                            <input class="statoOrdine" data-id="@item.IdOrdine" type="checkbox" name="selectedOrders" value="@item.StatoOrdine" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('input[type="checkbox"]').click(function () {
+                var ordineId = $(this).data("id");
+                $.ajax({
+                    url: '@Url.Action("AggiornaOrdine", "Admin")',
+                    type: 'POST',
+                    data: { id: ordineId },
+                    success: function (result) {
+                        console.log(result);
+                        location.reload();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+}

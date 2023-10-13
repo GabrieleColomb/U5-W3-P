@@ -1,0 +1,69 @@
+﻿@model U5_W3_P.Models.Prodotto
+
+@{
+    ViewBag.Title = "CreaPizza";
+}
+
+@using (Html.BeginForm("CreaPizza", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <br />
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h4>Aggiungi una nuova pizza</h4>
+                    </div>
+                    <div class="card-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label mb-0 text-dark" })
+                            <div class="mb-2">
+                                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FotoFile, htmlAttributes: new { @class = "control-label mb-0 text-dark" })
+                            <div class="mb-2">
+                                <input type="file" name="FotoFile" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.FotoFile, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Prezzo, htmlAttributes: new { @class = "control-label mb-0 text-dark" })
+                            <div class="mb-2">
+                                @Html.EditorFor(model => model.Prezzo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Prezzo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TempoConsegna, htmlAttributes: new { @class = "control-label mb-0 text-dark" })
+                            <div class="mb-2">
+                                @Html.EditorFor(model => model.TempoConsegna, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TempoConsegna, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Ingredienti, htmlAttributes: new { @class = "control-label mb-0 text-dark" })
+                            <div class="mb-2">
+                                @Html.EditorFor(model => model.Ingredienti, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Ingredienti, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <input type="submit" value="Create" class="btn btn-dark" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

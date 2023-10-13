@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Freddy Fazbear's Pizza</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @if (User.IsInRole("Admin"))
+    {
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Admin", new { area = "" })">
+                    <img src="https://i.pinimg.com/originals/c9/d9/0a/c9d90ab7edd10042abd06bdf30001423.png" alt="Logo" height="100" />
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("Home", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Aggiungi pizze", "CreaPizza", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Lista ordini", "ListaOrdini", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Statistiche giornaliere", "StatisticheGiornaliere", "Admin", new { area = "" }, new { @class = "nav-link " })</li>
+                        <li>@Html.ActionLink("LogOut", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    else if (User.IsInRole("User"))
+    {
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Users", new { area = "" })">
+                    <img src="https://i.pinimg.com/originals/c9/d9/0a/c9d90ab7edd10042abd06bdf30001423.png" alt="Logo" height="100" />
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("Home", "Index", "Users", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Ordina la tua pizza", "Pizze", "Users", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Il tuo ordine", "RiepilogoOrdine", "Users", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("LogOut", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    else 
+    {
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })">
+                <img src="https://i.pinimg.com/originals/c9/d9/0a/c9d90ab7edd10042abd06bdf30001423.png" alt="Logo" height="100" />
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Nuova registrazione", "Registrazione", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Login", "Login", "Login", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    }
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Freddy Fazbear's Pizza</p>
+    </footer>
+</div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

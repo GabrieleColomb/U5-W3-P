@@ -1,0 +1,59 @@
+﻿@model IEnumerable<U5_W3_P.Models.DettaglioOrdini>
+
+@{
+    ViewBag.Title = "RiepilogoOrdine";
+}
+
+<h2>Riepilogo del tuo ordine</h2>
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ordini.IdOrdine)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prodotto.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantità)
+                </th>
+                <th>
+                    Prezzo
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ordini.IdOrdine)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prodotto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantità)
+                    </td>
+                    <td>
+                        @((item.Prodotto.Prezzo * Convert.ToDecimal(@item.Quantità)))
+                    </td>
+                    <td>
+                        @Html.ActionLink("Elimina", "EliminaOrdine", new { id = item.IdDettaglio }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <h4>Prezzo totale: @ViewBag.PrezzoTotale.ToString("C")</h4>
+    </div>
+
+    <div class="text-center">
+        @Html.ActionLink("Invia ordine", "InviaOrdine", "Users", null, new { @class = "btn btn-primary" })
+    </div>
+</div>

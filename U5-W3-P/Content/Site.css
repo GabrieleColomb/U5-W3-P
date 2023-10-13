@@ -1,0 +1,7 @@
+﻿body {
+    background-image: url('img/pizzeria.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: auto;
+}
