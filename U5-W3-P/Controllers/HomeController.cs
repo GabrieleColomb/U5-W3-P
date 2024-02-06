@@ -32,6 +32,8 @@ namespace U5_W3_P.Controllers
             {
                 Db.Clienti.Add(clienti);
                 Db.SaveChanges();
+
+                return RedirectToAction("Login", "Login");
             }
             return View();
         }

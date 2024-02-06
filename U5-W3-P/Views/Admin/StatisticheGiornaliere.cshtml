@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "StatisticheGiornaliere";
 }
 
-<div class="container mt-5">
+<div class="container mt-5 text-center" style="margin-bottom: 11rem;">
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card">
@@ -32,31 +31,32 @@
     </div>
 </div>
 
-<!--Cliccare due volte il bottone per far partire entrmbe le chiamate asincrone-->
 @section scripts {
     <script>
-    $(document).ready(function () {
-        $('#visualizza-statistiche').click(function () {
-            $.ajax({
-                url: '@Url.Action("NumeroOrdiniEvasi", "Admin")',
-                type: 'GET',
-                dataType: 'json',
-                success: function (response) {
-                    console.log(response);
-                    $('#numero-ordini').text('Numero totale di ordini evasi: ' + response);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
+        $(document).ready(function () {
+            $('#visualizza-statistiche').click(function () {
+                $.ajax({
+                    url: '@Url.Action("NumeroOrdiniEvasi", "Admin")',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        $('#numero-ordini').text('Numero totale di ordini evasi: ' + response);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
             });
-        });
 
-        $.ajax({
+            $.ajax({
                 url: '@Url.Action("TotaleIncassato", "Admin")',
                 type: 'GET',
                 dataType: 'json',
                 success: function (response) {
-                    $('#totale-incassato').html('Totale incassato: ' + response);
+                    // Aggiungi il simbolo dell'euro al valore ricevuto nella risposta
+                    var totaleIncassato = response.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' });
+                    $('#totale-incassato').html('Totale incassato: ' + totaleIncassato);
                 },
                 error: function (error) {
                     console.log(error);

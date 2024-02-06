@@ -13,7 +13,8 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header bg-dark text-white">
+                    <div class="card-header bg-dark text-white text-center">
+                        <!-- Added text-center class to center the title -->
                         <h4>Aggiungi una nuova pizza</h4>
                     </div>
                     <div class="card-body">
@@ -27,9 +28,9 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.FotoFile, htmlAttributes: new { @class = "control-label mb-0 text-dark" })
+                            <label for="FotoFile" class="control-label mb-0 text-dark">Foto Pizza</label>
                             <div class="mb-2">
-                                <input type="file" name="FotoFile" class="form-control" />
+                                <input type="file" id="FotoFile" name="FotoFile" class="form-control" />
                                 @Html.ValidationMessageFor(model => model.FotoFile, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -43,9 +44,9 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.TempoConsegna, htmlAttributes: new { @class = "control-label mb-0 text-dark" })
+                            <label for="TempoConsegna" class="control-label mb-0 text-dark">Tempo Consegna</label>
                             <div class="mb-2">
-                                @Html.EditorFor(model => model.TempoConsegna, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.TempoConsegna, new { htmlAttributes = new { @class = "form-control", id = "TempoConsegna" } })
                                 @Html.ValidationMessageFor(model => model.TempoConsegna, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -59,7 +60,7 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <input type="submit" value="Create" class="btn btn-dark" />
+                            <input type="submit" value="Aggiungi al menù" class="btn btn-dark" />
                         </div>
                     </div>
                 </div>

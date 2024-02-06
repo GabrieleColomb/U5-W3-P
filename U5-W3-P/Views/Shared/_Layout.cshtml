@@ -4,7 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Freddy Fazbear's Pizza</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <title>@ViewBag.Title - Blaze & Dough</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -14,7 +16,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
             <div class="container">
                 <a class="navbar-brand" href="@Url.Action("Index", "Admin", new { area = "" })">
-                    <img src="https://i.pinimg.com/originals/c9/d9/0a/c9d90ab7edd10042abd06bdf30001423.png" alt="Logo" height="100" />
+                    <img src="~/Content/img/imageedit_22_9264570647.png" alt="Logo" height="90" />
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +24,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li>@Html.ActionLink("Home", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li><a href="@Url.Action("Index", "Admin", new { area = "" })" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
                         <li>@Html.ActionLink("Aggiungi pizze", "CreaPizza", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Lista ordini", "ListaOrdini", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Statistiche giornaliere", "StatisticheGiornaliere", "Admin", new { area = "" }, new { @class = "nav-link " })</li>
@@ -37,7 +39,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
             <div class="container">
                 <a class="navbar-brand" href="@Url.Action("Index", "Users", new { area = "" })">
-                    <img src="https://i.pinimg.com/originals/c9/d9/0a/c9d90ab7edd10042abd06bdf30001423.png" alt="Logo" height="100" />
+                    <img src="~/Content/img/imageedit_22_9264570647.png" alt="Logo" height="90" />
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -45,43 +47,90 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li>@Html.ActionLink("Home", "Index", "Users", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Users")" class="nav-link d-flex align-items-center">
+                                <i class="fas fa-home"></i>
+                                <span class="ms-2">Home</span>
+                            </a>
+                        </li>
                         <li>@Html.ActionLink("Ordina la tua pizza", "Pizze", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Il tuo ordine", "RiepilogoOrdine", "Users", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("LogOut", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item ml-auto">
+                            @Html.ActionLink("LogOut", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    }
+    else
+    {
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })">
+                    <img src="~/Content/img/imageedit_22_9264570647.png" alt="Logo" height="70" />
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Home")" class="nav-link d-flex align-items-center">
+                                <i class="fas fa-home"></i>
+                                <span class="ms-2">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Chi siamo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Contatti
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Location
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Eventi
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1 ml-auto">
+                        <li class="nav-item" style="margin-left: auto;">
+                            <a href="@Url.Action("Registrazione", "Home", new { area = "" })" class="nav-link">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <span class="visually-hidden">Registrati qui!</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Login", "Login", new { area = "" })" class="nav-link">
+                                <i class="fa-solid fa-user"></i>
+                                <span class="visually-hidden">Login</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     }
-    else 
-    {
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
-        <div class="container">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })">
-                <img src="https://i.pinimg.com/originals/c9/d9/0a/c9d90ab7edd10042abd06bdf30001423.png" alt="Logo" height="100" />
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Nuova registrazione", "Registrazione", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Login", "Login", "Login", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    }
-<div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Freddy Fazbear's Pizza</p>
-    </footer>
-</div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="footer">
+            <p>&copy; @DateTime.Now.Year - Blaze & Dough</p>
+        </footer>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

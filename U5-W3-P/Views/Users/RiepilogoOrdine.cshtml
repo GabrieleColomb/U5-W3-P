@@ -4,15 +4,12 @@
     ViewBag.Title = "RiepilogoOrdine";
 }
 
-<h2>Riepilogo del tuo ordine</h2>
+<h2 class="text-center" style="color:white">Riepilogo del tuo ordine</h2>
 
 <div class="container">
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="margin-bottom: 20.5rem; background-color: #f2f2f2;">
         <thead class="thead-dark">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ordini.IdOrdine)
-                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Prodotto.Nome)
                 </th>
@@ -30,29 +27,29 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Ordini.IdOrdine)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Prodotto.Nome)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Quantità)
                     </td>
                     <td>
-                        @((item.Prodotto.Prezzo * Convert.ToDecimal(@item.Quantità)))
+                        @(item.Prodotto.Prezzo * Convert.ToDecimal(@item.Quantità)) &euro;
                     </td>
                     <td>
-                        @Html.ActionLink("Elimina", "EliminaOrdine", new { id = item.IdDettaglio }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Elimina", "EliminaOrdine", new { id = item.IdDettaglio }, new { @class = "btn btn-danger", style = "text-decoration:none;" })
+                        <i class="bi bi-trash"></i>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <div>
-        <h4>Prezzo totale: @ViewBag.PrezzoTotale.ToString("C")</h4>
+    <div class="text-center mt-5">
+        <h4 class="mb-4 text-white">
+            <i class="fas fa-coins fa-2x mr-2 text-white"></i>
+            Prezzo totale: <span class="badge badge-success">@ViewBag.PrezzoTotale.ToString("C")</span>
+        </h4>
     </div>
-
     <div class="text-center">
         @Html.ActionLink("Invia ordine", "InviaOrdine", "Users", null, new { @class = "btn btn-primary" })
     </div>

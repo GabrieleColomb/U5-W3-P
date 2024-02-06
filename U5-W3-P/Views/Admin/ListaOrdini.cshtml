@@ -4,18 +4,17 @@
     ViewBag.Title = "ListaOrdini";
 }
 
-<h2>ListaOrdini</h2>
-
-<div class="container">
+<div class="container text-center mt-4">
+    <h2 style="color: white;">Lista Ordini</h2>
     <form method="post" action="/Ordini/EditSelected">
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="background-color: #f2f2f2; margin-bottom: 25rem;">
             <thead class="thead-dark">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Clienti.Nome)
+                        Utente
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().DataOrdine)
+                        Data Ordine
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.First().Importo)
@@ -30,13 +29,13 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Clienti.Nome)
+                            @Html.DisplayFor(modelItem => item.Clienti.Username)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataOrdine)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Importo)
+                            @Html.DisplayFor(modelItem => item.Importo) €
                         </td>
                         <td>
                             <input class="statoOrdine" data-id="@item.IdOrdine" type="checkbox" name="selectedOrders" value="@item.StatoOrdine" />
@@ -47,7 +46,6 @@
         </table>
     </form>
 </div>
-
 
 @section scripts {
     <script>

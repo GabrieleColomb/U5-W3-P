@@ -7,17 +7,32 @@
 
 @using (Html.BeginForm("Ordine", "Users", FormMethod.Post, new { @class = "text-center mt-4" }))
 {
-    <button type="submit" class="btn btn-secondary">Ordina le tue pizze</button>
+    <div class="d-inline-flex align-items-center">
+        <div style="margin-right: 10px;">
+            <button type="submit" class="btn btn-secondary">
+                Ordina le tue pizze
+            </button>
+        </div>
+        <div>
+            <i class="fas fa-info-circle" style="cursor: help; color: red; margin-left: 10px;" title="Per iniziare l'ordine, clicca qui a fianco e poi scegli le pizze da aggiungere al carrello."></i>
+        </div>
+    </div>
 }
 
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 <br />
-<h2>Le nostre pizze</h2>
-<div class="row">
+<h2 class="text-center" style="color:white; margin-right: 35px;">Le nostre pizze</h2>
+<div class="row justify-content-center">
     @foreach (Prodotto prodotto in Model)
     {
         <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <img src="~/Content/img/@prodotto.Foto" class="card-img-top" alt="Pizza" style="height: 200px; object-fit: cover;">
+            <div class="card h-100" style="border-radius: 15px; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);">
+                <img src="~/Content/img/@prodotto.Foto" class="card-img-top" alt="Pizza" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
                 <div class="card-body">
                     <h5 class="card-title">@prodotto.Nome</h5>
                     <p class="card-text">Prezzo: @prodotto.Prezzo €</p>
@@ -30,7 +45,7 @@
                             <label for="quantita">Quantità:</label>
                             <input type="number" name="quantita" id="quantita" class="form-control mb-3" style="width: 60px;" />
                         </div>
-                        <button type="submit" class="btn btn-secondary">Aggiungi al carrello</button>
+                        <button type="submit" class="btn btn-warning btn-block">Aggiungi al carrello</button>
                     }
                 </div>
             </div>
