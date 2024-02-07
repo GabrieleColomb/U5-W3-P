@@ -1,42 +1,44 @@
-﻿@model IEnumerable<U5_W3_P.Models.Ordini>
+﻿<body style="background-image: url('https://images.unsplash.com/photo-1561350111-7daa4f284bc6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-repeat: no-repeat; background-position: center center; margin: auto;">
+    @model IEnumerable<U5_W3_P.Models.Ordini>
 
-@{
-    ViewBag.Title = "ListaOrdini";
-}
+    @{
+        ViewBag.Title = "ListaOrdini";
+    }
 
-<div class="container text-center mt-4">
-    <h2 style="color: white;">Lista Ordini</h2>
-    <form method="post" action="/Ordini/EditSelected">
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" style="background-color: #f2f2f2; margin-bottom: 25rem;">
-                <thead style="background-color: #808080; color: black;">
-                    <tr>
-                        <th>Utente</th>
-                        <th>Data Ordine</th>
-                        <th>@Html.DisplayNameFor(model => model.First().Importo)</th>
-                        <th>Evaso</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+    <div class="container text-center mt-4">
+        <h2 style="color: white;">Lista Ordini</h2>
+        <form method="post" action="/Ordini/EditSelected">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" style="background-color: #f2f2f2; margin-bottom: 25rem;">
+                    <thead style=" color: black;">
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Clienti.Username)</td>
-                            <td>@Html.DisplayFor(modelItem => item.DataOrdine)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Importo) €</td>
-                            <td>
-                                <input class="statoOrdine" data-id="@item.IdOrdine" type="checkbox" name="selectedOrders" value="@item.StatoOrdine" />
-                            </td>
+                            <th>Utente</th>
+                            <th>Data Ordine</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Importo)</th>
+                            <th>Evaso</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </form>
-</div>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Clienti.Username)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DataOrdine)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Importo) €</td>
+                                <td>
+                                    <input class="statoOrdine" data-id="@item.IdOrdine" type="checkbox" name="selectedOrders" value="@item.StatoOrdine" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>
 
-@section scripts {
-    <script>
+    @section scripts {
+        <script>
         $(document).ready(function () {
             $('input[type="checkbox"]').click(function () {
                 var ordineId = $(this).data("id");
@@ -54,5 +56,5 @@
                 });
             });
         });
-    </script>
-}
+        </script>
+    }

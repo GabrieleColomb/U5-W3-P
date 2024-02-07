@@ -24,7 +24,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li><a href="@Url.Action("Index", "Admin", new { area = "" })" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="@Url.Action("Index", "Admin", new { area = "" })" class="nav-link"> Home</a></li>
                         <li>@Html.ActionLink("Aggiungi pizze", "CreaPizza", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Lista ordini", "ListaOrdini", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Statistiche giornaliere", "StatisticheGiornaliere", "Admin", new { area = "" }, new { @class = "nav-link " })</li>
@@ -55,7 +55,6 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Users")" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-home"></i>
                                 <span class="ms-2">Home</span>
                             </a>
                         </li>
@@ -89,7 +88,6 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Home")" class="nav-link d-flex align-items-center">
-                                <i class="fas fa-home"></i>
                                 <span class="ms-2">Home</span>
                             </a>
                         </li>

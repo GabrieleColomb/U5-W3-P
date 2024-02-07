@@ -1,54 +1,58 @@
-﻿@using U5_W3_P.Models
-@model List<Prodotto>
+﻿<body style="background-image: url('https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-repeat: no-repeat; background-position: center center; margin: auto;">
 
-@{
-    ViewBag.Title = "Pizze";
-}
+    @using U5_W3_P.Models
+    @model List<Prodotto>
 
-@using (Html.BeginForm("Ordine", "Users", FormMethod.Post, new { @class = "text-center mt-4" }))
-{
-    <div class="d-inline-flex align-items-center">
-        <div style="margin-right: 10px;">
-            <button type="submit" class="btn btn-secondary">
-                Ordina le tue pizze
-            </button>
-        </div>
-        <div>
-            <i class="fas fa-info-circle" style="cursor: help; color: red; margin-left: 10px;" title="Per iniziare l'ordine, clicca qui a fianco e poi scegli le pizze da aggiungere al carrello.&#10;L'ordine non può essere visionato se prima non si ordina."></i>
-        </div>
-    </div>
-}
+    @{
+        ViewBag.Title = "Pizze";
+    }
 
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
-
-<br />
-<h2 class="text-center" style="color:white; margin-right: 35px;">Le nostre pizze</h2>
-<div class="row justify-content-center">
-    @foreach (Prodotto prodotto in Model)
+    @using (Html.BeginForm("Ordine", "Users", FormMethod.Post, new { @class = "text-center mt-4" }))
     {
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" style="border-radius: 15px; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);">
-                <img src="~/Content/img/@prodotto.Foto" class="card-img-top" alt="Pizza" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                <div class="card-body">
-                    <h5 class="card-title">@prodotto.Nome</h5>
-                    <p class="card-text">Prezzo: @prodotto.Prezzo €</p>
-                    <p class="card-text">Tempo di consegna: @prodotto.TempoConsegna</p>
-                    <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
-
-                    @using (Html.BeginForm("MoveToCart", "Users", new { id = prodotto.IdProdotto }, FormMethod.Post))
-                    {
-                        <div class="form-group">
-                            <label for="quantita">Quantità:</label>
-                            <input type="number" name="quantita" id="quantita" class="form-control mb-3" style="width: 60px;" />
-                        </div>
-                        <button type="submit" class="btn btn-warning btn-block">Aggiungi al carrello</button>
-                    }
-                </div>
+        <div class="d-inline-flex align-items-center">
+            <div style="margin-right: 10px;">
+                <button type="submit" class="btn btn-secondary">
+                    Ordina le tue pizze
+                </button>
+            </div>
+            <div>
+                <i class="fas fa-info-circle" style="cursor: help; color: red; margin-left: 10px;" title="Per iniziare l'ordine, clicca qui a fianco e poi scegli le pizze da aggiungere al carrello.&#10;L'ordine non può essere visionato se prima non si ordina."></i>
             </div>
         </div>
     }
-</div>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+    <br />
+    <h2 class="text-center" style="color:white; margin-right: 35px;">Le nostre pizze</h2>
+    <div class="row justify-content-center">
+        @foreach (Prodotto prodotto in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100" style="border-radius: 15px; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);">
+                    <img src="~/Content/img/@prodotto.Foto" class="card-img-top" alt="Pizza" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@prodotto.Nome</h5>
+                        <p class="card-text">Prezzo: @prodotto.Prezzo €</p>
+                        <p class="card-text">Tempo di consegna: @prodotto.TempoConsegna</p>
+                        <p class="card-text">Ingredienti: @prodotto.Ingredienti</p>
+
+                        @using (Html.BeginForm("MoveToCart", "Users", new { id = prodotto.IdProdotto }, FormMethod.Post))
+                        {
+                            <div class="form-group">
+                                <label for="quantita">Quantità:</label>
+                                <input type="number" name="quantita" id="quantita" class="form-control mb-3" style="width: 60px;" />
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-block">Aggiungi al carrello</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+

@@ -1,38 +1,40 @@
-﻿@{
-    ViewBag.Title = "StatisticheGiornaliere";
-}
+﻿<body style="background-image: url('https://images.unsplash.com/photo-1561350111-7daa4f284bc6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-repeat: no-repeat; background-position: center center; margin: auto;">
+    @{
+        ViewBag.Title = "StatisticheGiornaliere";
+    }
 
-<div class="container mt-5 text-center" style="margin-bottom: 11rem;">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header bg-dark text-white">
-                    <h3 class="card-title">Statistiche giornaliere</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="data">Seleziona una data:</label>
-                            <input type="date" class="form-control" id="data" name="data" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                        </div>
-                        <br />
-                        <div class="form-group text-center">
-                            <button type="button" id="visualizza-statistiche" class="btn btn-dark">Visualizza Statistiche</button>
-                        </div>
-                    </form>
+    <div class="container mt-5 text-center" style="margin-bottom: 11rem;">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h3 class="card-title">Statistiche giornaliere</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="data">Seleziona una data:</label>
+                                <input type="date" class="form-control" id="data" name="data" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                            </div>
+                            <br />
+                            <div class="form-group text-center">
+                                <button type="button" id="visualizza-statistiche" class="btn btn-dark">Visualizza Statistiche</button>
+                            </div>
+                        </form>
 
-                    <div class="mt-4">
-                        <p id="numero-ordini">Ordini</p>
-                        <p id="totale-incassato">Totale incassato</p>
+                        <div class="mt-4">
+                            <p id="numero-ordini">Ordini</p>
+                            <p id="totale-incassato">Totale incassato</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </body>
 
-@section scripts {
-    <script>
+    @section scripts {
+        <script>
         $(document).ready(function () {
             $('#visualizza-statistiche').click(function () {
                 $.ajax({
@@ -63,5 +65,5 @@
                 }
             });
         });
-    </script>
-}
+        </script>
+    }

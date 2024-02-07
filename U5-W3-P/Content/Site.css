@@ -1,12 +1,4 @@
-﻿body {
-    background-image: url('img/pizza.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin: auto;
-}
-
-.container.body-content {
+﻿.container.body-content {
     flex: 1;
 }
 

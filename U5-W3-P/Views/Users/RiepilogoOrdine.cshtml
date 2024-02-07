@@ -3,46 +3,47 @@
 @{
     ViewBag.Title = "RiepilogoOrdine";
 }
+<body style=" background-image: url('https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-repeat: no-repeat; background-position: center center; margin: auto;">
+    <h2 class="text-center" style="color: white;">Riepilogo del tuo ordine</h2>
 
-<h2 class="text-center" style="color: white;">Riepilogo del tuo ordine</h2>
-
-<div class="container">
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped" style="background-color: #f2f2f2;">
-            <thead style="background-color: #808080; color: black;">
-                <tr>
-                    <th>Prodotto</th>
-                    <th>Quantità</th>
-                    <th>Prezzo</th>
-                    <th>Azioni</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" style="background-color: #f2f2f2;">
+                <thead style="color: black;">
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Prodotto.Nome)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Quantità)</td>
-                        <td>@(item.Prodotto.Prezzo * Convert.ToDecimal(item.Quantità)) &euro;</td>
-                        <td>
-                            <button onclick="location.href='@Url.Action("EliminaOrdine", new { id = item.IdDettaglio })'" class="btn btn-danger" style="text-decoration:none; color: white;">
-                                <i class="fas fa-x"></i>
-                            </button>
-                        </td>
+                        <th>Prodotto</th>
+                        <th>Quantità</th>
+                        <th>Prezzo</th>
+                        <th>Azioni</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Prodotto.Nome)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Quantità)</td>
+                            <td>@(item.Prodotto.Prezzo * Convert.ToDecimal(item.Quantità)) &euro;</td>
+                            <td>
+                                <button onclick="location.href='@Url.Action("EliminaOrdine", new { id = item.IdDettaglio })'" class="btn btn-danger" style="text-decoration:none; color: white;">
+                                    <i class="fas fa-x"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
-    <div class="text-center mt-5">
-        <h4 class="mb-4 text-white">
-            <i class="fas fa-coins fa-2x mr-2 text-white"></i>
-            Prezzo totale: <span class="badge badge-success">@ViewBag.PrezzoTotale.ToString("C")</span>
-        </h4>
-    </div>
+        <div class="text-center mt-5">
+            <h4 class="mb-4 text-white">
+                <i class="fas fa-coins fa-2x mr-2 text-white"></i>
+                Prezzo totale: <span class="badge badge-success">@ViewBag.PrezzoTotale.ToString("C")</span>
+            </h4>
+        </div>
 
-    <div class="text-center">
-        @Html.ActionLink("Invia ordine", "InviaOrdine", "Users", null, new { @class = "btn btn-primary", @style = "margin-bottom: 7rem; padding: 12px 24px; font-size: 18px; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" })
+        <div class="text-center">
+            @Html.ActionLink("Invia ordine", "InviaOrdine", "Users", null, new { @class = "btn btn-primary", @style = "margin-bottom: 10rem; padding: 12px 24px; font-size: 18px; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" })
+        </div>
     </div>
-</div>
+</body>
