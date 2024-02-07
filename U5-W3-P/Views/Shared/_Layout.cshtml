@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
             <div class="container">
                 <a class="navbar-brand" href="@Url.Action("Index", "Admin", new { area = "" })">
-                    <img src="~/Content/img/imageedit_22_9264570647.png" alt="Logo" height="90" />
+                    <img src="~/Content/img/imageedit_22_9264570647.png" alt="Logo" height="70" />
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,13 @@
                         <li>@Html.ActionLink("Aggiungi pizze", "CreaPizza", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Lista ordini", "ListaOrdini", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Statistiche giornaliere", "StatisticheGiornaliere", "Admin", new { area = "" }, new { @class = "nav-link " })</li>
-                        <li>@Html.ActionLink("LogOut", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Logout", "Login", new { area = "" })" class="nav-link">
+                                <i class="fa-solid fa-door-open"></i>                             
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -39,7 +45,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark text-light">
             <div class="container">
                 <a class="navbar-brand" href="@Url.Action("Index", "Users", new { area = "" })">
-                    <img src="~/Content/img/imageedit_22_9264570647.png" alt="Logo" height="90" />
+                    <img src="~/Content/img/imageedit_22_9264570647.png" alt="Logo" height="70" />
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +64,9 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item ml-auto">
-                            @Html.ActionLink("LogOut", "Logout", "Login", new { area = "" }, new { @class = "nav-link" })
+                            <a href="@Url.Action("Logout", "Login", new { area = "" })" class="nav-link">
+                                <i class="fa-solid fa-door-open"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>

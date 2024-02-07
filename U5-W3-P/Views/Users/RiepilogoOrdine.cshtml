@@ -4,45 +4,36 @@
     ViewBag.Title = "RiepilogoOrdine";
 }
 
-<h2 class="text-center" style="color:white">Riepilogo del tuo ordine</h2>
+<h2 class="text-center" style="color: white;">Riepilogo del tuo ordine</h2>
 
 <div class="container">
-    <table class="table table-bordered" style="margin-bottom: 20.5rem; background-color: #f2f2f2;">
-        <thead class="thead-dark">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prodotto.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Quantità)
-                </th>
-                <th>
-                    Prezzo
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped" style="background-color: #f2f2f2;">
+            <thead style="background-color: #808080; color: black;">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Prodotto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantità)
-                    </td>
-                    <td>
-                        @(item.Prodotto.Prezzo * Convert.ToDecimal(@item.Quantità)) &euro;
-                    </td>
-                    <td>
-                        @Html.ActionLink("Elimina", "EliminaOrdine", new { id = item.IdDettaglio }, new { @class = "btn btn-danger", style = "text-decoration:none;" })
-                        <i class="bi bi-trash"></i>
-                    </td>
+                    <th>Prodotto</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
+                    <th>Azioni</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Prodotto.Nome)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Quantità)</td>
+                        <td>@(item.Prodotto.Prezzo * Convert.ToDecimal(item.Quantità)) &euro;</td>
+                        <td>
+                            <button onclick="location.href='@Url.Action("EliminaOrdine", new { id = item.IdDettaglio })'" class="btn btn-danger" style="text-decoration:none; color: white;">
+                                <i class="fas fa-x"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
     <div class="text-center mt-5">
         <h4 class="mb-4 text-white">
@@ -50,7 +41,8 @@
             Prezzo totale: <span class="badge badge-success">@ViewBag.PrezzoTotale.ToString("C")</span>
         </h4>
     </div>
+
     <div class="text-center">
-        @Html.ActionLink("Invia ordine", "InviaOrdine", "Users", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Invia ordine", "InviaOrdine", "Users", null, new { @class = "btn btn-primary", @style = "margin-bottom: 7rem; padding: 12px 24px; font-size: 18px; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" })
     </div>
 </div>

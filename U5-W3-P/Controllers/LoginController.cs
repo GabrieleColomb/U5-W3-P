@@ -39,15 +39,20 @@ namespace U5_W3_P.Controllers
 
                     if (user.Ruolo == "Admin")
                     {
-                        return RedirectToAction("Index", "Admin"); 
+                        return RedirectToAction("Index", "Admin");
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Users"); 
+                        return RedirectToAction("Index", "Users");
                     }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Credenziali non valide. Verifica username e password.");
                 }
             }
 
+            // Se si arriva qui, ci sono errori di validazione
             return View();
         }
 

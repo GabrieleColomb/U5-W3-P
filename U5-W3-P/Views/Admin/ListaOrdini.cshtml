@@ -7,43 +7,31 @@
 <div class="container text-center mt-4">
     <h2 style="color: white;">Lista Ordini</h2>
     <form method="post" action="/Ordini/EditSelected">
-        <table class="table table-bordered" style="background-color: #f2f2f2; margin-bottom: 25rem;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        Utente
-                    </th>
-                    <th>
-                        Data Ordine
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.First().Importo)
-                    </th>
-                    <th>
-                        Evaso
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" style="background-color: #f2f2f2; margin-bottom: 25rem;">
+                <thead style="background-color: #808080; color: black;">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Clienti.Username)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataOrdine)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Importo) €
-                        </td>
-                        <td>
-                            <input class="statoOrdine" data-id="@item.IdOrdine" type="checkbox" name="selectedOrders" value="@item.StatoOrdine" />
-                        </td>
+                        <th>Utente</th>
+                        <th>Data Ordine</th>
+                        <th>@Html.DisplayNameFor(model => model.First().Importo)</th>
+                        <th>Evaso</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Clienti.Username)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DataOrdine)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Importo) €</td>
+                            <td>
+                                <input class="statoOrdine" data-id="@item.IdOrdine" type="checkbox" name="selectedOrders" value="@item.StatoOrdine" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </form>
 </div>
 
